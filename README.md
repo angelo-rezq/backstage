@@ -1,44 +1,71 @@
-# BACKSTAGE
+<div align="center">
 
-منصة إنتاج لحجز تذاكر المسرح مبنية بـ Next.js وMongoDB Atlas.
+# 🎭 BACKSTAGE
 
-## التثبيت المحلي
+**Arabic-first theater booking platform — shows, ticketing, receipt verification and QR entry**
 
-1. انسخ `.env.example` إلى `.env.local` وأدخل بيانات MongoDB وسر JWT.
-2. شغّل `npm install`.
-3. شغّل `npm run setup-db` لإنشاء الفهارس والحساب الإداري الأول.
-4. شغّل `npm run dev` وافتح `http://localhost:3000`.
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Site-success?style=for-the-badge)](https://backstage-company-eight.vercel.app)
 
-## MongoDB Atlas
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com)
+[![JWT](https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)](https://jwt.io)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com)
 
-- أنشئ مشروعاً ومجموعة بيانات.
-- أضف عنوان IP الذي تشغّل منه في Network Access.
-- استخدم URI الاتصالات في `MONGODB_URI`.
-- استخدم قاعدة بيانات جديدة من `MONGODB_DB_NAME`.
-- الملفات والصور تُحفظ تلقائياً في GridFS.
+</div>
 
-## النشر على Vercel
+---
 
-- اربط مستودع المشروع بـ Vercel.
-- أضف `MONGODB_URI` و`MONGODB_DB_NAME` و`ADMIN_EMAIL` و`ADMIN_PASSWORD` و`JWT_SECRET` و`NEXT_PUBLIC_APP_URL`.
-- استخدم `npm run build` كأمر البناء.
-- امنح حساب Atlas وصولاً من الشبكات العامة أو من نطاقات Vercel.
-- اضبط `NEXT_PUBLIC_APP_URL` على عنوان الإنتاج الصحيح لتوليد الروابط الأساسية وملف sitemap وبيانات المشاركة الاجتماعية.
+## 🌐 Live
 
-## الحساب الإداري الأول
+- **Website:** [backstage-company-eight.vercel.app](https://backstage-company-eight.vercel.app)
+- **Admin:** [backstage-company-eight.vercel.app/admin/login](https://backstage-company-eight.vercel.app/admin/login)
 
-يوجد مساران لإنشاء الحساب:
+## ✨ Features
 
-- ضع بيانات `ADMIN_EMAIL` و`ADMIN_PASSWORD` ثم نفّذ `npm run setup-db`.
-- أو سجّل دخول `/admin/login` باستخدام البريد وكلمة المرور القيمتين في المتغيرات البيئية؛ سيتم إنشاء الحساب عند أول نجاح.
+- 🎟️ **Show listings & ticket booking** for the troupe's productions, Arabic RTL with dark mode.
+- 🧾 **Payment receipt upload** — audience members attach a transfer receipt with their booking.
+- 📱 **QR-code entry** — every booking issues a QR code for door validation.
+- 🛠️ **Admin dashboard** — manage shows, bookings and receipts.
+- 🖼️ **Media storage in MongoDB GridFS** — no external file service needed.
+- 🔎 **SEO-ready** — sitemap and social share metadata generated from the production URL.
 
-غيّر كلمة المرور الافتراضية قبل النشر ولا تستخدمها في بيئات الإنتاج.
+## 🛠️ Tech Stack
 
-## إدارة المحتوى والحجوزات
+| Layer | Choice |
+| --- | --- |
+| Framework | Next.js + TypeScript |
+| Database | MongoDB Atlas (GridFS for files and images) |
+| Auth | JWT |
+| Hosting | Vercel |
 
-- من `/admin/shows` أضف العروض أو عدّلها، وارفع الملصق وصور أعضاء الكاست. تظهر صور العروض في البطاقات، ويُبنى `/cast` من الكاست المسجل.
-- من `/admin/content` أنشئ صفحات نصية بمسارات فريدة مثل `/pages/about-us`؛ الصفحات المنشورة تظهر في التنقل، وتُعرض كنص عادي دون تفسير HTML.
-- أضف روابط التواصل الآمنة `https://` من إعدادات الموقع لتظهر في التذييل.
-- يسمح النظام بتذكرة واحدة لكل عرض حسب رقم الهاتف أو البريد الإلكتروني. بعد رفع إثبات الدفع واعتماده، يمكن للضيف البحث من `/bookings` باستخدام رقم الحجز ورقم الهاتف، والبريد أيضًا إذا أُدخل عند الحجز.
-- نفّذ `npm run setup-db` بعد تحديث التطبيق لإنشاء فهارس التفرد التي تمنع تكرار حجز الضيف وتُنشئ تسلسل أرقام التذاكر.
-- يدعم إثبات الدفع Instapay ومحفظة كاش، واعتماد الحضور بكود التذكرة من `/admin/checkin` مع منع استخدام التذكرة أكثر من مرة.
+## 🚀 Getting Started
+
+1. Copy `.env.example` to `.env.local` and fill in your MongoDB URI and JWT secret.
+2. `npm install`
+3. `npm run setup-db` — creates indexes and the first admin account.
+4. `npm run dev` and open `http://localhost:3000`.
+
+### Environment variables
+
+| Variable | Purpose |
+| --- | --- |
+| `MONGODB_URI` | MongoDB Atlas connection string |
+| `MONGODB_DB_NAME` | Database name |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | First admin account (setup flow) |
+| `JWT_SECRET` | Token signing secret |
+| `NEXT_PUBLIC_APP_URL` | Production URL for links, sitemap and share metadata |
+
+---
+
+<div align="center">
+
+## 👨‍💻 Developed by [Angelo Rezq](https://github.com/angelo-rezq)
+
+**Full-Stack Developer · Flutter · Next.js · React**
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-black?style=for-the-badge)](https://angelo-portfolio.angluosr.workers.dev)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-Chat-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/201127570256)
+[![Email](https://img.shields.io/badge/Email-angelo.rezq.dev%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:angelo.rezq.dev@gmail.com)
+
+</div>
